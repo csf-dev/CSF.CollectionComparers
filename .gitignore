@@ -1,0 +1,13 @@
+bin/
+obj/
+TestResult.xml
+TestResult.formatted.xml
+*.pidb
+*.VisualState.xml
+*.userprefs
+*.orig
+*.directory
+packages/*/*
+*.nupkg
+.vs/
+*.DotSettings.user
