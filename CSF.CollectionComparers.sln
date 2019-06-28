@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF", "CSF\CSF.csproj", "{E563D7BC-1AB1-4AFB-8533-51315437C6E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.CollectionComparers", "CSF.CollectionComparers\CSF.CollectionComparers.csproj", "{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.CSF", "Test.CSF\Test.CSF.csproj", "{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.CollectionComparers.Tests", "CSF.CollectionComparers.Tests\CSF.CollectionComparers.Tests.csproj", "{C4D2C6EC-1E17-46BE-B617-B56DD0FD2AF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11DCF35A-6E2A-4C62-B536-14B83FF5AE07}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E563D7BC-1AB1-4AFB-8533-51315437C6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D2C6EC-1E17-46BE-B617-B56DD0FD2AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D2C6EC-1E17-46BE-B617-B56DD0FD2AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D2C6EC-1E17-46BE-B617-B56DD0FD2AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D2C6EC-1E17-46BE-B617-B56DD0FD2AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
