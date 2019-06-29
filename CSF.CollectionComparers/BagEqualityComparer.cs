@@ -2,13 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Common = CSF.Collections.CommonCollectionEqualityComparisonFunctions;
+using System.Reflection;
+using static CSF.Collections.CommonCollectionEqualityComparisonFunctions;
 
 namespace CSF.Collections
 {
     /// <summary>
-    /// Implementation of <c>IEqualityComparer&lt;T&gt;</c> which compares two enumerable objects for set equality.
-    /// That is, they must contain an equal collection of items, in any order (duplicate items are considered, however).
+    /// An <see cref="IEqualityComparer{T}"/> which compares <see cref="IEnumerable{T}"/> objects using bag equality.
+    /// Objects are considered equal if they contain equal items, in the same number, but where the order of the
+    /// items is irrelevant.
     /// </summary>
     /// <typeparam name="TItem">The type of item within the collections</typeparam>
     public class BagEqualityComparer<TItem> : IEqualityComparer, IEqualityComparer<IEnumerable<TItem>>
@@ -16,10 +18,16 @@ namespace CSF.Collections
         readonly IEqualityComparer<TItem> itemEqComparer;
         readonly IComparer<TItem> itemComparer;
 
-        bool IEqualityComparer.Equals(object x, object y) => Common.Equals<TItem>(x, y, Equals);
+        bool IEqualityComparer.Equals(object x, object y) => Equals<TItem>(x, y, Equals);
 
-        int IEqualityComparer.GetHashCode(object obj) => Common.GetHashCode<TItem>(obj, GetHashCode);
+        int IEqualityComparer.GetHashCode(object obj) => GetHashCode<TItem>(obj, GetHashCode);
 
+        /// <summary>
+        /// Determines whether the two enumerable objects are equal.
+        /// </summary>
+        /// <returns><c>true</c> if the two objects are equal; <c>false</c> otherwise</returns>
+        /// <param name="x">The first object to compare.</param>
+        /// <param name="y">The first object to compare.</param>
         public bool Equals(IEnumerable<TItem> x, IEnumerable<TItem> y)
         {
             if (ReferenceEquals(x, y)) return true;
@@ -31,7 +39,7 @@ namespace CSF.Collections
             if (DoFiniteCollectionCountsDiffer(x, y))
                 return false;
 
-            if(typeof(IComparable).IsAssignableFrom(typeof(TItem)))
+            if(typeof(TItem).GetTypeInfo().IsSubclassOf(typeof(IComparable)))
                 return AreCollectionsOfComparableItemsEqual(x, y);
 
             return !DoCollectionsDifferByElementEquality(x, y);
@@ -115,16 +123,30 @@ namespace CSF.Collections
             return dictionary;
         }
 
+        /// <summary>
+        /// Gets a hash code for the given enumerable object.
+        /// </summary>
+        /// <returns>The hash code.</returns>
+        /// <param name="obj">The object for which to get a hash code.</param>
+        /// <exception cref="ArgumentNullException">If the <paramref name="obj"/> is <c>null</c>.</exception>
         public int GetHashCode(IEnumerable<TItem> obj)
         {
             if (ReferenceEquals(obj, null))
                 throw new ArgumentNullException(nameof(obj));
 
-            return obj.Aggregate(0, (acc, next) => acc ^ Common.GetItemHashCode(next, itemEqComparer));
+            return obj.Aggregate(0, (acc, next) => acc ^ GetItemHashCode(next, itemEqComparer));
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BagEqualityComparer{T}"/> class.
+        /// </summary>
         public BagEqualityComparer() : this(null, null) {}
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BagEqualityComparer{T}"/> class.
+        /// </summary>
+        /// <param name="itemEqComparer">An equality comparer by which to compare items within collections.</param>
+        /// <param name="itemComparer">An item comparer used to determine an order of items within collections.</param>
         public BagEqualityComparer(IEqualityComparer<TItem> itemEqComparer = null, IComparer<TItem> itemComparer = null)
         {
             this.itemEqComparer = itemEqComparer ?? EqualityComparer<TItem>.Default;

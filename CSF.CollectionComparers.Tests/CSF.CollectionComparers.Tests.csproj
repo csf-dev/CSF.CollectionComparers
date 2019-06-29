@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <IsTestProject>true</IsTestProject>
+    <ReleaseVersion>1.0.0</ReleaseVersion>
+    <NoWarn>1701;1702;NU1603</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
