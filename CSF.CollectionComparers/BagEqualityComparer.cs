@@ -134,7 +134,22 @@ namespace CSF.Collections
             if (ReferenceEquals(obj, null))
                 throw new ArgumentNullException(nameof(obj));
 
-            return obj.Aggregate(0, (acc, next) => acc ^ GetItemHashCode(next, itemEqComparer));
+            var counts = new Dictionary<object, long>();
+            foreach(object current in obj)
+            {
+                var item = current ?? new NullObject();
+                if (!counts.ContainsKey(item)) counts.Add(item, 0);
+                counts[item] = counts[item] + 1;
+            }
+
+            return counts.Aggregate(0, (acc, next) =>
+            {
+                unchecked
+                {
+                    var itemHash = next.Key is TItem item ? GetItemHashCode(item, itemEqComparer) : 31;
+                    return acc ^ itemHash ^ next.Value.GetHashCode();
+                }
+            });
         }
 
         /// <summary>
@@ -151,6 +166,17 @@ namespace CSF.Collections
         {
             this.itemEqComparer = itemEqComparer ?? EqualityComparer<TItem>.Default;
             this.itemComparer = itemComparer ?? Comparer<TItem>.Default;
+        }
+
+        /// <summary>
+        /// This object is used to represent nulls when getting a hash code.  This is because an actual null is not permitted
+        /// as a dictionary key.
+        /// </summary>
+        class NullObject
+        {
+            public override bool Equals(object obj) => obj is NullObject;
+
+            public override int GetHashCode() => 31;
         }
     }
 }
