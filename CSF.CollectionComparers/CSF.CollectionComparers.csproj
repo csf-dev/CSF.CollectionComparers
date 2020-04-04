@@ -14,7 +14,7 @@ In each case, effort has been made to use the "best" algorithm available for equ
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright 2020 - CSF Software Limited</Copyright>
-    <PackageProjectUrl>https://github.com/csf-dev/CSF.EqualityRules</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/csf-dev/CSF.CollectionComparers</PackageProjectUrl>
     <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
