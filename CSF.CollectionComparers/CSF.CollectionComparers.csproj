@@ -1,31 +1,34 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.2</TargetFrameworks>
-    <PackOnBuild>true</PackOnBuild>
-    <Authors>CSF Software Ltd</Authors>
+    <TargetFrameworks>netstandard2.0;netstandard1.2;net45</TargetFrameworks>
+    <Authors>craigfowler</Authors>
+        
+    <PackageId>CSF.CollectionComparers</PackageId>
+    <Title>Collection comparers</Title>
     <Description>Implementations of the generic IEqualityComparer&lt;T&gt; which are used for comparing generic IEnumerable&lt;T&gt; objects.  These equality comparers represent various comparison strategies such as list/sequence, set and bag equality.
 
 In each case, effort has been made to use the "best" algorithm available for equality-testing.</Description>
     <ReleaseVersion>1.0.0</ReleaseVersion>
+    <Version>$(ReleaseVersion)</Version>
+    <PackageVersion>$(ReleaseVersion)</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright 2020 - CSF Software Limited</Copyright>
+    <PackageProjectUrl>https://github.com/csf-dev/CSF.EqualityRules</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\CSF-Software-OSS.snk</AssemblyOriginatorKeyFile>
-    <PackageId>CSF.CollectionComparers</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
-    <Summary>Classes implementing IEqualityComparer&lt;IEnumerable&lt;T&gt;&gt; providing strategies for comparing collections of items/objects.</Summary>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DocumentationFile>bin\Debug\netstandard1.2\CSF.CollectionComparers.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\$(TargetFramework)\CSF.CollectionComparers.xml</DocumentationFile>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DocumentationFile>bin\Release\netstandard1.2\CSF.CollectionComparers.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\$(TargetFramework)\CSF.CollectionComparers.xml</DocumentationFile>
     <DebugType></DebugType>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD1_2</DefineConstants>
-    <DocumentationFile>bin\Release\netstandard1.2\CSF.CollectionComparers.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.2" />
-  </ItemGroup>
+    
+  <Import Project="..\Tools\EnableMultiTargetingWithMono.targets" />
+    
 </Project>
