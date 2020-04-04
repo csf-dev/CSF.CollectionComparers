@@ -1,5 +1,5 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSF.CollectionComparers", "CSF.CollectionComparers\CSF.CollectionComparers.csproj", "{A7339D98-0F8B-4EA2-B3E6-9EA4104E51F7}"
 EndProject
@@ -161,6 +161,6 @@ Global
 		$25.NamingStyle = PascalCase
 		$25.IncludeInstanceMembers = True
 		$25.IncludeStaticEntities = True
-		version = 1.0.0
+		version = 1.1.0
 	EndGlobalSection
 EndGlobal
