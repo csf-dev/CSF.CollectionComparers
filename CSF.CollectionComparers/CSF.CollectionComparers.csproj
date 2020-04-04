@@ -9,7 +9,7 @@
     <Description>Implementations of the generic IEqualityComparer&lt;T&gt; which are used for comparing generic IEnumerable&lt;T&gt; objects.  These equality comparers represent various comparison strategies such as list/sequence, set and bag equality.
 
 In each case, effort has been made to use the "best" algorithm available for equality-testing.</Description>
-    <ReleaseVersion>1.1.0</ReleaseVersion>
+    <ReleaseVersion>1.1.1</ReleaseVersion>
     <Version>$(ReleaseVersion)</Version>
     <PackageVersion>$(ReleaseVersion)</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

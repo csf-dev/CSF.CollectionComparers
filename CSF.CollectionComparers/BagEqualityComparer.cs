@@ -161,8 +161,20 @@ namespace CSF.Collections
         /// Initializes a new instance of the <see cref="BagEqualityComparer{T}"/> class.
         /// </summary>
         /// <param name="itemEqComparer">An equality comparer by which to compare items within collections.</param>
+        public BagEqualityComparer(IEqualityComparer<TItem> itemEqComparer) : this(itemEqComparer, null) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BagEqualityComparer{T}"/> class.
+        /// </summary>
         /// <param name="itemComparer">An item comparer used to determine an order of items within collections.</param>
-        public BagEqualityComparer(IEqualityComparer<TItem> itemEqComparer = null, IComparer<TItem> itemComparer = null)
+        public BagEqualityComparer(IComparer<TItem> itemComparer) : this(null, itemComparer) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BagEqualityComparer{T}"/> class.
+        /// </summary>
+        /// <param name="itemEqComparer">An equality comparer by which to compare items within collections.</param>
+        /// <param name="itemComparer">An item comparer used to determine an order of items within collections.</param>
+        public BagEqualityComparer(IEqualityComparer<TItem> itemEqComparer, IComparer<TItem> itemComparer)
         {
             this.itemEqComparer = itemEqComparer ?? EqualityComparer<TItem>.Default;
             this.itemComparer = itemComparer ?? Comparer<TItem>.Default;
