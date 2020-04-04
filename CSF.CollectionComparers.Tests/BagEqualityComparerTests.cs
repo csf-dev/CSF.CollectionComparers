@@ -166,6 +166,22 @@ namespace CSF.Collections.Tests
         }
 
         [Test, AutoMoqData]
+        public void GetHashCode_should_not_return_same_value_for_a_collection_with_an_even_count_of_item_differences(BagEqualityComparer<string> sut)
+        {
+            // Reproduces issue #1
+            // 
+            // The item "two" appears three times in the first collection and once in the second,
+            // thus the number of differences between the counts of that item's appearance is an even number: 2
+            var collectionOne = new[] { "one", "two", "two", "three", "two" };
+            var collectionTwo = new[] { "one", "three", "two" };
+
+            var result1 = sut.GetHashCode(collectionOne);
+            var result2 = sut.GetHashCode(collectionTwo);
+
+            Assert.That(result1, Is.Not.EqualTo(result2));
+        }
+
+        [Test, AutoMoqData]
         public void GetHashCode_returns_different_value_for_two_collections_with_different_elements(BagEqualityComparer<string> sut)
         {
             var collectionOne = new[] {"one", "two", "three"};
