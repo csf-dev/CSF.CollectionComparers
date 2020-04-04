@@ -7,7 +7,6 @@ TestResult.formatted.xml
 *.userprefs
 *.orig
 *.directory
-packages/*/*
-*.nupkg
+packages/
 .vs/
 *.DotSettings.user
