@@ -53,8 +53,7 @@ namespace CSF.Collections
 
         ISet<TItem> GetSet(IEnumerable<TItem> collection)
         {
-            var set = collection as HashSet<TItem>;
-            if (set != null && set.Comparer.Equals(itemComparer))
+            if(collection is HashSet<TItem> set && set.Comparer.Equals(itemComparer))
                 return set;
 
             return new HashSet<TItem>(collection, itemComparer);
